@@ -97,4 +97,20 @@ public class DVD {
     public void setAdditional_information(String additional_information) {
         this.additional_information = additional_information;
     }
+    @Override
+    public String toString(){
+        StringBuilder metadata = new StringBuilder();
+        String DELIMITER = ",";
+        try {
+            metadata.append(getTitle()+DELIMITER);
+            metadata.append(getRelease_date()+DELIMITER);
+            metadata.append(getRatingMPAA()+DELIMITER);
+            metadata.append(getDirector_name()+DELIMITER);
+            metadata.append(getStudio_name()+DELIMITER);
+            metadata.append(getAdditional_information());
+        }catch (Exception e){
+            System.err.println("Error: " + e.getMessage());
+        }
+        return metadata.toString();
+    }
 }

@@ -3,16 +3,16 @@ One,12121999,18,Terry,HBO,Yuck
 Valhala Rising,10102016,21,Thorsen,Norway Films,Good
 The Proposition,01042015,18,N. Cave,AMG,Excellent
 SpaceBalls,02031983,12,M. Brooks,Warner,Funny
-The Hunger Games,03232012,12,Gary Ross,Excellent
-Come and See,27071985,15,Elem Klimov,Best USSR movie. Gut-wrenching
+The Hunger Games,03232012,12,Gary Ross,Placeholder,Excellent
+Come and See,27071985,15,Elem Klimov,Mosfilm,Best USSR movie. Gut-wrenching
 Salt,18092010,13,Phillip Noyce,Good
 Gladiator,12052000,15,Ridley Scot,Grand
-Le Samourai,25101967,15,Jean-Pierre Melville,Excellent
+Le Samourai,25101967,15,Jean-Pierre Melville,Placeholder, Excellent
 The Platform,20032020,13,Galder Gaztelu-Urrutia,Disturbing
-The Old Guard,10072020,15,Gina Prince-Bythewood,Excellent
-Squid Game,17092021,17,Hwang Dong-hyuk,Disturbing
-The exorcism of Emily Rose,09092005,13,Scott Derrickson,Good
-The Shallows,12082016,13,Jaume Collet-Serra,Good
-Escape room,01022019,13,Adam Robitel,Excellent
-It's Complicated,08012010,16,Nancy Meyers,Excellent
-Bird box,21122018,17,Susanne Bier,Good
+The Old Guard,10072020,15,Gina Prince-Bythewood,Placeholder,Excellent
+Squid Game,17092021,17,Hwang Dong-hyuk,Placeholder,Disturbing
+The exorcism of Emily Rose,09092005,13,Scott Derrickson,Placeholder,Good
+The Shallows,12082016,13,Jaume Collet-Serra,Placeholder,Good
+Escape room,01022019,13,Adam Robitel,Placeholder,Excellent
+It's Complicated,08012010,16,Nancy Meyers,Placeholder,Excellent
+Bird box,21122018,17,Susanne Bier,Placeholder,Good

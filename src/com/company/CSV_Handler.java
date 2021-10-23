@@ -1,13 +1,15 @@
 package com.company;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class CSV_Handler {
     private static final String DELIMITER = ",";
     File fileNameIn = new File("data/in/dvds.txt");
     File fileNameOut = new File("data/out/Output.txt");
 
-    public static void readCSV(String fileNameIn){
+    public static ArrayList<DVD> readCSV(String fileNameIn){
+        ArrayList<DVD> allDVDs = new ArrayList<DVD>();
         BufferedReader fileReader = null;
         try
         {
@@ -19,12 +21,9 @@ public class CSV_Handler {
             while ((line = fileReader.readLine()) != null)
             {
                 //Get all tokens available in line
-                String[] tokens = line.split(DELIMITER);
-                for(String token : tokens)
-                {
-                    //Print all tokens
-                    System.out.println(token);
-                }
+                String[] metadata = line.split(DELIMITER);
+                DVD dvd = new DVD(metadata);
+                allDVDs.add(dvd);
             }
         }
         catch (Exception e) {
@@ -33,26 +32,23 @@ public class CSV_Handler {
         finally
         {
             try {
+
                 fileReader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        return allDVDs;
     }
-    public static void writeCSV(String fileNameOut){
-        int arrOut[][] = {{5, 100, 115, 20},{10,20,30,50}};
-
+    public static void writeCSV(ArrayList<DVD> allDVDs, String fileNameOut){
         try {
             FileWriter fw = new FileWriter(fileNameOut);
             BufferedWriter bw = new BufferedWriter(fw);
-            for (int i = 0; i < arrOut.length; i++) {
-                for (int j = 0; j<arrOut[i].length;j++){
-                Integer x = arrOut[i][j];
-                bw.write(x.toString() + ",");
-            }
-                bw.write("\n");
+            for (int i = 0; i < allDVDs.size(); i++) {
+                DVD dvd = allDVDs.get(i);
+                String metadata = dvd.toString();
+                bw.write(metadata.toString() + "\n");
                 bw.flush();
-
             }
             bw.close();
         } catch (Exception e) {
