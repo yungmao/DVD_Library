@@ -2,24 +2,23 @@ package com.company;
 
 import java.util.Scanner;
 
+/**
+ * Representation of a single DVD in library
+ */
 public class DVD {
+
     private String title;
-    private String release_date; // Note to myself change to Calendar date
-    private String ratingMPAA; //Note to myself check from enum?
+    private String release_date;
+    private String ratingMPAA;
     private String director_name;
     private String studio_name;
     private String additional_information;
 
-    DVD(String title, String release_date, String ratingMPAA,
-        String director_name, String studio_name, String additional_information) {
-        this.title = title;
-        this.release_date = release_date;
-        this.ratingMPAA = ratingMPAA;
-        this.director_name = director_name;
-        this.studio_name = studio_name;
-        this.additional_information = additional_information;
-    }
 
+    /**
+     * Constructor initialize DVD from csv file
+     * @param dvd_data Single line parsed from csv file
+     */
     DVD(String[] dvd_data) {
         try {
             this.title = dvd_data[0];
@@ -33,38 +32,47 @@ public class DVD {
         }
     }
 
+    /**
+     * Constructor initialize DVD with input from user using setters
+     */
     DVD() {
         Scanner input = new Scanner(System.in);
-        System.out.printf("Title: ");
+        System.out.print("Title: ");
         setTitle(title = input.nextLine());
-        System.out.printf("Release date: ");
+        System.out.print("Release date: ");
         setRelease_date(release_date = input.nextLine());
-        System.out.printf("MPAA rating: ");
+        System.out.print("MPAA rating: ");
         setRatingMPAA(ratingMPAA = input.nextLine());
-        System.out.printf("Director name: ");
+        System.out.print("Director name: ");
         setDirector_name(director_name = input.nextLine());
-        System.out.printf("Studio name: ");
+        System.out.print("Studio name: ");
         setStudio_name(studio_name = input.nextLine());
-        System.out.printf("Additional information: ");
+        System.out.print("Additional information: ");
         setAdditional_information(additional_information = input.nextLine());
 
     }
+
+
 
     public String getTitle() {
         return title;
     }
 
+
     public String getRelease_date() {
         return release_date;
     }
+
 
     public String getRatingMPAA() {
         return ratingMPAA;
     }
 
+
     public String getDirector_name() {
         return director_name;
     }
+
 
     public String getStudio_name() {
         return studio_name;
@@ -97,6 +105,11 @@ public class DVD {
     public void setAdditional_information(String additional_information) {
         this.additional_information = additional_information;
     }
+
+    /**
+     * Method allows for instance of DVD to be parsed to a new csv file
+     * @return Parse DVD to .csv file format
+     */
     @Override
     public String toString(){
         StringBuilder metadata = new StringBuilder();
