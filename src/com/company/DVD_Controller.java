@@ -10,7 +10,30 @@ public class DVD_Controller {
     public static Scanner input = new Scanner(System.in);
 
     /**
+     * Find index of DVD in library
+     *
+     * @param library ArrayList of all DVDs
+     * @return index of search DVD in library
+     * @throws Exception when no DVD with given title is found
+     */
+    public static int findDVDIndex(ArrayList<DVD> library) throws Exception {
+        String title = input.nextLine();
+        int index = -1;
+        for (int i = 0; i < library.size(); i++) {
+            DVD dvd = library.get(i);
+            if (title.equalsIgnoreCase(dvd.getTitle())) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            throw new Exception(" Title not found");
+        }
+        return index;
+    }
+
+    /**
      * Add new DVD to library by user
+     *
      * @param library ArrayList of all DVDs
      */
     public static void addDVD(ArrayList<DVD> library) {
@@ -20,107 +43,109 @@ public class DVD_Controller {
 
     /**
      * Remove DVD from library by its title
+     *
      * @param library ArrayList of all DVDs
      */
     public static void removeDVD(ArrayList<DVD> library) {
         System.out.print("Which movie do you want to remove from Library: ");
-        int index = findDVDIndex(library);
-        library.remove(index);
+        try {
+            int index = findDVDIndex(library);
+            library.remove(index);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     /**
      * List all DVD title in library
+     *
      * @param library ArrayList of all DVDs
      */
     public static void listDVD(ArrayList<DVD> library) {
         System.out.println("Library currently have these DVDs: ");
         for (DVD dvd : library) {
-            System.out.println(dvd.getTitle());
+//            System.out.println(dvd.getTitle());
+            System.out.println(dvd.toString());
         }
     }
 
     /**
      * Display metadata of DVD by its title
+     *
      * @param library ArrayList of all DVDs
      */
     public static void displayDVDsData(ArrayList<DVD> library) {
         System.out.print("Which movie's information do you want to display: ");
-        int index = findDVDIndex(library);
-        DVD dvd = library.get(index);
-        System.out.println(dvd.toString());
-    }
-
-    /**
-     * Find index of DVD in library
-     * @param library ArrayList of all DVDs
-     * @return index of search DVD in library
-     */
-    public static int findDVDIndex(ArrayList<DVD> library) {
-        String title = input.nextLine();
-        int index = 0;
-        for (int i = 0; i < library.size(); i++) {
-            DVD dvd = library.get(i);
-            if (title.equalsIgnoreCase(dvd.getTitle())) {
-                index = i;
-            }
+        try {
+            int index = findDVDIndex(library);
+            DVD dvd = library.get(index);
+            System.out.println(dvd.toString());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        return index;
     }
-
 
     /**
      * Edit DVD metadata
+     *
      * @param library ArrayList of all DVDs
      */
     public static void editDVD(ArrayList<DVD> library) {
         System.out.print("Which movie's information do you want to edit: ");
-        int index = findDVDIndex(library);
-        DVD dvd = library.get(index);
-        boolean stillEdit = true;
-        while(stillEdit) {
-            printOptions();
-            int option = input.nextInt();
-            input.nextLine();
-            switch (option) {
-                case 1:
-                    System.out.print("New title: ");
-                    String title = input.nextLine();
-                    dvd.setTitle(title);
-                    break;
-                case 2:
-                    System.out.print("New release date: ");
-                    String release_date = input.nextLine();
-                    dvd.setRelease_date(release_date);
-                    break;
-                case 3:
-                    System.out.print("New MPAA rating: ");
-                    String ratingMPAA = input.nextLine();
-                    dvd.setRatingMPAA(ratingMPAA);
-                    break;
-                case 4:
-                    System.out.print("New Director name: ");
-                    String director_name = input.nextLine();
-                    dvd.setDirector_name(director_name);
-                    break;
-                case 5:
-                    System.out.print("New Studio name: ");
-                    String studio_name = input.nextLine();
-                    dvd.setStudio_name(studio_name);
-                    break;
-                case 6:
-                    System.out.print("New Additional information:  ");
-                    String additional_information = input.nextLine();
-                    dvd.setAdditional_information(additional_information);
-                    break;
-                case 7:
-                    stillEdit=false;
-                    break;
-                default:
-                    System.out.println("Wrong option");
+        try {
+            int index = findDVDIndex(library);
+            DVD dvd = library.get(index);
+            boolean stillEdit = true;
+            while (stillEdit) {
+                printOptions();
+                int option = input.nextInt();
+                input.nextLine();
+                switch (option) {
+                    case 1:
+                        System.out.print("New title: ");
+                        String title = input.nextLine();
+                        dvd.setTitle(title);
+                        break;
+                    case 2:
+                        System.out.print("New release date: ");
+                        String release_date = input.nextLine();
+                        dvd.setRelease_date(release_date);
+                        break;
+                    case 3:
+                        System.out.print("New MPAA rating: ");
+                        String ratingMPAA = input.nextLine();
+                        dvd.setRatingMPAA(ratingMPAA);
+                        break;
+                    case 4:
+                        System.out.print("New Director name: ");
+                        String director_name = input.nextLine();
+                        dvd.setDirector_name(director_name);
+                        break;
+                    case 5:
+                        System.out.print("New Studio name: ");
+                        String studio_name = input.nextLine();
+                        dvd.setStudio_name(studio_name);
+                        break;
+                    case 6:
+                        System.out.print("New Additional information:  ");
+                        String additional_information = input.nextLine();
+                        dvd.setAdditional_information(additional_information);
+                        break;
+                    case 7:
+                        stillEdit = false;
+                        break;
+                    default:
+                        System.out.println("Wrong option");
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
+
     }
-    private static void printOptions(){
+
+    private static void printOptions() {
         System.out.println("Which information do you want to edit");
         System.out.println("1 - Title");
         System.out.println("2 - Release date");

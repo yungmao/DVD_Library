@@ -5,11 +5,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Responsible for handling csv file
+ * Responsible for handling csv file. Class based on FileIOBasics by Eugene O'Regan
  */
 public class CSV_Handler {
 
+    /**
+     * Must be changed to user absolute path of data/in
+     */
     private static final String INPUT_FILE_DIR = "C:\\Users\\Student241165\\IdeaProjects\\DVD_Library\\data\\in\\";
+    /**
+     * Must be changed to user absolute path of data/out
+     */
     private static final String OUTPUT_FILE_DIR = "C:\\Users\\Student241165\\IdeaProjects\\DVD_Library\\data\\out\\";
     private static final String EXTENSION = ".txt";
     private static final String DELIMITER = ",";
@@ -21,7 +27,6 @@ public class CSV_Handler {
      * @return Absolute filepath of Input file
      */
     public static String getInputFilepath() {
-        System.out.println("Welcome to DVD Library");
         System.out.print("Which file to read: ");
         String read_filename = input.nextLine();
         return INPUT_FILE_DIR + read_filename + EXTENSION;
@@ -61,7 +66,8 @@ public class CSV_Handler {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         finally
         {
@@ -69,7 +75,7 @@ public class CSV_Handler {
                 assert fileReader != null;
                 fileReader.close();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
         return allDVDs;
@@ -92,7 +98,7 @@ public class CSV_Handler {
             }
             bw.close();
         } catch (Exception e) {
-
+            System.out.println("Error: "+e.getMessage());
         }
     }
 }

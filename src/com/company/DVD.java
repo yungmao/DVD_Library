@@ -14,7 +14,6 @@ public class DVD {
     private String studio_name;
     private String additional_information;
 
-
     /**
      * Constructor initialize DVD from csv file
      * @param dvd_data Single line parsed from csv file
@@ -52,27 +51,21 @@ public class DVD {
 
     }
 
-
-
     public String getTitle() {
         return title;
     }
-
 
     public String getRelease_date() {
         return release_date;
     }
 
-
     public String getRatingMPAA() {
         return ratingMPAA;
     }
 
-
     public String getDirector_name() {
         return director_name;
     }
-
 
     public String getStudio_name() {
         return studio_name;
